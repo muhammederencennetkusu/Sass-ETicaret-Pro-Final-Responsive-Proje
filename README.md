@@ -18,6 +18,7 @@ Bu proje, modern bir e-ticaret sitesi için geliştirilmiş, ileri seviye **Sass
 * **Font Awesome:** İkon kütüphanesi.
 
 ## 📁 Klasör Yapısı (Sass)
+```bash
 scss/
 ├── abstracts/        # Değişkenler, mixin'ler, fonksiyonlar
 │   ├── _variables.scss
@@ -33,6 +34,8 @@ scss/
 │   └── _product-listing.scss
 ├── pages/            # Sayfaya özel, büyük stiller (Opsiyonel)
 └── style.scss        # Ana çıktı dosyası (Tüm parçaları import eder)
+
+```
 
 ## 🚀 Başlangıç Kılavuzu
 
