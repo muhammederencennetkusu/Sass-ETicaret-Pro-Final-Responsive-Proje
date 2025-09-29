@@ -1,0 +1,75 @@
+// scss/components/_off-canvas-menu.scss
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.off-canvas-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background-color: v.$color-text-dark;
+    color: v.$color-text-light;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    padding: v.$spacing-unit * 3 v.$spacing-unit * 2;
+    box-shadow: v.$shadow-medium;
+
+    // Menü aktif olduğunda görünür yap (JS ile bu sınıfı eklediğimizi varsayıyoruz)
+    &.is-active {
+        transform: translateX(0);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    &__links {
+        list-style: none;
+        padding: 0;
+        margin-bottom: auto;
+
+        li {
+            margin-bottom: v.$spacing-unit * 1.5;
+        }
+
+        a {
+            color: v.$color-text-light;
+            font-size: 1.2rem;
+            display: block;
+
+            &:hover {
+                color: v.$color-primary;
+            }
+        }
+    }
+
+    // Alttaki ikonlar (Giriş/Sepet)
+    &__icons {
+        @include m.flex-center();
+        justify-content: space-around;
+        padding-top: v.$spacing-unit * 2;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        a {
+            color: v.$color-text-light;
+            font-size: 2rem;
+
+            &:hover {
+                color: v.$color-primary;
+            }
+        }
+    }
+
+    // Kapatma butonu (Opsiyonel: X işareti)
+    &__close {
+        position: absolute;
+        top: v.$spacing-unit;
+        right: v.$spacing-unit;
+
+    }
+}

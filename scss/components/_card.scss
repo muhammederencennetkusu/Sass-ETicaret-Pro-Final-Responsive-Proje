@@ -1,0 +1,60 @@
+// scss/components/_card.scss
+@use '../abstracts/variables';
+@use '../abstracts/mixins' as m;
+@use "sass:map"; 
+@use "sass:color"; 
+
+// Temel Kart Stili
+.card {
+    border: 1px solid #ddd;
+    border-radius: variables.$border-radius-base;
+    padding: variables.$spacing-unit;
+    margin-bottom: variables.$spacing-unit * 2;
+    background-color: variables.$color-text-light;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &__title {
+        font-size: 1.5rem;
+        margin-bottom: variables.$spacing-unit;
+        color: variables.$color-text-dark;
+    }
+
+    @include m.respond-up(tablet) {
+        width: calc(50% - variables.$spacing-unit); 
+        margin-right: variables.$spacing-unit;
+    }
+
+    @include m.respond-up(desktop) {
+        width: calc(33.333% - variables.$spacing-unit * 2 / 3);
+        margin-right: variables.$spacing-unit;
+    }
+
+}
+
+.card-grid {
+    display: block; 
+    margin: 0 auto;
+    @include m.respond-up(tablet) { 
+        display: flex;
+        flex-wrap: wrap; // Kartların alt satıra geçmesini sağlar
+        justify-content: space-between; // Kartlar arasında eşit boşluk bırakır
+    }
+}
+
+
+@each $name, $color in variables.$state-colors {
+    .card--#{$name} {
+        background-color: $color;
+        color: variables.$color-text-light;
+
+        .card__title {
+            color: variables.$color-text-light;
+        }
+        
+        border-color: color.adjust($color, $lightness: -15%);
+
+        &:hover {
+            background-color: color.adjust($color, $lightness: -5%); 
+        }
+    }
+}

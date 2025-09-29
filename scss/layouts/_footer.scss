@@ -1,0 +1,104 @@
+// scss/layouts/_footer.scss
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+
+.site-footer {
+    background-color: v.$color-text-dark;
+    color: v.$color-text-light;
+    padding: v.$spacing-unit * 3 v.$spacing-unit * 2;
+    margin-top: v.$spacing-unit * 5;
+    font-size: 0.9rem;
+
+    // 1. site-footer: İçindeki ana divleri (header ve copyright) alt alta dizer.
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    // __header ve __copyright arasındaki boşluk
+    gap: v.$spacing-unit * 3;
+
+    // **********************************************
+    // 2. site-footer__header: ASIL RESPONSIVE DÜZEN BURADA YÖNETİLİR
+    // **********************************************
+    &__header {
+        width: 100%;
+        display: flex;
+
+        // Mobil/Varsayılan: Section'ları alt alta dizer (Dikey)
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: v.$spacing-unit * 3; // Section'lar arası boşluk
+
+        // Tablet ve üzeri: Section'ları yan yana dizer (Yatay)
+        @include m.respond-up(tablet) {
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            text-align: left;
+        }
+    }
+
+    // Altbilgi Bölümleri (Hızlı Linkler, İletişim vs.)
+    &__section {
+        // Mobil: Header'ın içindeki gap ile yönetiliyor.
+
+        @include m.respond-up(tablet) {
+            // Desktop/Tablet: Yatayda yer kaplasın
+            width: 30%;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-bottom: v.$spacing-unit;
+            color: v.$color-primary;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin-bottom: v.$spacing-unit-small;
+            }
+
+            a {
+                color: v.$color-text-light;
+                text-decoration: none;
+                opacity: 0.7;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__copyright {
+        width: 100%;
+        padding-top: v.$spacing-unit;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        p {
+            margin: 0;
+            text-align: center;
+            opacity: 0.6;
+        }
+    }
+}
+
+// Telif Hakkı (En alttaki tek satır)
+.site-footer__copyright {
+    margin-top: v.$spacing-unit * 2;
+    padding-top: v.$spacing-unit;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    text-align: center;
+
+    @include m.respond-up(tablet) {
+        text-align: left;
+    }
+}

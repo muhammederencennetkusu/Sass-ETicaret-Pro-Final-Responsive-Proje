@@ -1,0 +1,44 @@
+// scss/components/_forms.scss
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// Formlar için temel stil
+.form-group {
+    margin-bottom: v.$spacing-unit * 2;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    @include m.form-input-base();
+}
+
+.form-control {
+    // Varsayılan form stili buraya gelir (input, select, textarea)
+    // Eğer mixin kullanıyorsanız, burayı atlayın.
+
+    // YÜKSEKLİK VE YUVARLAKLIK EKLEME
+    height: 40px;
+    padding: 0 v.$spacing-unit;
+    border-radius: v.$border-radius-base; // Biraz daha yuvarlak kenarlar
+    // Diğer temel stiller...
+}
+
+.form-control-search {
+    // Varsayılan form stili buraya gelir (input, select, textarea)
+    // Eğer mixin kullanıyorsanız, burayı atlayın.
+
+    // YÜKSEKLİK VE YUVARLAKLIK EKLEME
+    width: 500px;
+    height: 40px;
+    padding: 0 v.$spacing-unit;
+    border-radius: v.$border-radius-base; // Biraz daha yuvarlak kenarlar
+    border: 4px solid white;
+
+    // Diğer temel stiller...
+    @media (max-width: 1192px) {
+        width: 200px;
+    }
+}

@@ -1,0 +1,32 @@
+// Renkler
+$color-primary: #3498db;
+$color-secondary: #2ecc71;
+$color-text-dark: #333;
+$color-text-light: #fff;
+$color-border: #ccc;
+$color-danger: #e74c3c;
+
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1200px;
+
+$grid-columns: 12;
+
+// Fontlar
+$font-stack: 'Roboto', sans-serif;
+$font-family-base: 'Roboto', Arial, sans-serif;
+$font-size-base: 16px;
+
+$shadow-light: 0 2px 4px rgba(0, 0, 0, 0.08); // İnce ve hafif gölge
+$shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15); // Hover için daha belirgin gölge
+
+// Aralıklar ve Boyutlar
+$spacing-unit: 0.5rem;
+$border-radius-base: 4px;
+$spacing-unit-small: 0.5rem; // Yeni Form Mixin'i için gerekli!
+
+$state-colors: (
+    'success': #2ecc71,
+    'warning': #f39c12,
+    'danger': #e74c3c,
+    'info': #3498db
+);

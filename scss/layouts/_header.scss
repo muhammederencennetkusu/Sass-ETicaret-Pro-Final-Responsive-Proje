@@ -1,0 +1,166 @@
+// scss/layouts/_header.scss
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use "sass:color";
+
+.site-header {
+    background-color: v.$color-primary;
+    color: v.$color-text-light;
+    padding: v.$spacing-unit * 1.5 v.$spacing-unit * 2;
+    margin-bottom: v.$spacing-unit * 3;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    @include m.shadow-apply(light);
+    z-index: 10;
+
+    // Mobil görünümde kenar boşluklarını daralt
+    @media (max-width: (v.$breakpoint-tablet - 1)) {
+        padding: v.$spacing-unit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__branding {
+            display: flex;
+            flex-direction: column;
+            margin-top: 19px;
+            margin-left: 50px;
+
+            h1 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+        }
+
+
+        &__icons {
+            @include m.flex-center();
+            gap: v.$spacing-unit * 1.5;
+            font-size: 1.5rem;
+            margin-left: 100px;
+
+            a {
+                color: v.$color-text-light;
+
+                &:hover {
+                    color: color.adjust(v.$color-text-light, $lightness: -10%);
+                }
+            }
+
+            // KULLANICI VE SEPET İKONLARI: Off-Canvas menüde gösterildiği için her yerde gizlenir.
+            .icon-user,
+            .icon-cart {
+                display: none !important;
+            }
+
+            // HAMBURGER MENÜ İKONU (SADECE MOBİL)
+            .icon-menu {
+                display: none; // Desktop/Tablette gizle
+
+                @media (max-width: (v.$breakpoint-tablet - 1)) {
+                    display: block; // Mobilde göster
+                    font-size: 2rem;
+                }
+            }
+        }
+
+    }
+
+    &__branding {
+        display: flex;
+        flex-direction: column;
+        margin-top: 19px;
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    }
+
+    // NAVİGASYON LİNKLERİ (DESKTOP)
+    &__nav {
+        @include m.flex-center();
+        gap: v.$spacing-unit * 1.5;
+
+        @media (max-width: (v.$breakpoint-tablet - 1)) {
+            display: none; // Mobilde gizle
+        }
+
+        @include m.respond-up(tablet) {
+            width: 600px;
+            height: 100%;
+            display: flex; // Desktop/Tablette göster
+            justify-content: space-evenly;
+            margin-right: 1rem;
+        }
+
+        a {
+            color: v.$color-text-light;
+            text-decoration: none;
+
+            &:hover {
+                color: color.adjust(v.$color-text-light, $lightness: -10%);
+            }
+        }
+    }
+
+    // ARAMA ÇUBUĞU (DESKTOP)
+    &__search {
+        width: 35%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 10px;
+
+
+        @media (max-width: (v.$breakpoint-tablet - 1)) {
+            display: none; // Mobilde gizle
+        }
+
+        @include m.respond-up(tablet) {
+            display: block; // Desktop/Tablette göster
+        }
+    }
+
+    // İKONLAR VE MOBİL BUTONLARI
+    &__icons {
+        @include m.flex-center();
+        gap: v.$spacing-unit * 1.5;
+        font-size: 1.5rem;
+
+        a {
+            color: v.$color-text-light;
+
+            &:hover {
+                color: color.adjust(v.$color-text-light, $lightness: -10%);
+            }
+        }
+
+        // KULLANICI VE SEPET İKONLARI: Off-Canvas menüde gösterildiği için her yerde gizlenir.
+        .icon-user,
+        .icon-cart {
+            display: none !important;
+        }
+
+        // HAMBURGER MENÜ İKONU (SADECE MOBİL)
+        .icon-menu {
+            display: none; // Desktop/Tablette gizle
+
+            @media (max-width: (v.$breakpoint-tablet - 1)) {
+                display: block; // Mobilde göster
+                font-size: 2rem;
+            }
+        }
+    }
+}

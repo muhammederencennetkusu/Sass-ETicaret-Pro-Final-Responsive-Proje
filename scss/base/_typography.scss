@@ -1,0 +1,33 @@
+// scss/base/_typography.scss
+
+@use '../abstracts/variables' as v;
+
+body {
+    font-family: v.$font-family-base; // variables'dan çekilir
+    font-size: v.$font-size-base;
+    color: v.$color-text-dark;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    margin-bottom: v.$spacing-unit;
+    font-weight: 700; // Kalın başlıklar
+    margin: 30px;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+// Linkler için temel stil
+a {
+    color: v.$color-primary;
+    text-decoration: none;
+}

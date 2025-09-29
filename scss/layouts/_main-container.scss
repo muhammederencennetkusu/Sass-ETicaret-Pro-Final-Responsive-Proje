@@ -1,0 +1,10 @@
+// scss/layouts/_main-container.scss
+
+@use '../abstracts/variables' as v;
+
+.main-container {
+    max-width: 1400px; // Geniş ekranlarda içeriği sınırlar
+    margin: 20px; // Ortalar
+    padding: 2rem; // İç boşluk
+    padding-top: v.$spacing-unit * 4; // Header'ın altından boşluk
+}

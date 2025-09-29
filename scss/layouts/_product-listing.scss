@@ -1,0 +1,52 @@
+// scss/layouts/_product-listing.scss
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.product-listing {
+    max-width: 1400px;
+    margin: 20px auto;
+    @include m.grid-container(v.$spacing-unit * 2);
+    padding: v.$spacing-unit * 2 0;
+
+    @include m.respond-up(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: (700px)) {
+        margin: 20px;
+    }
+
+
+    @include m.respond-up(desktop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+// *******************************************************************
+
+.product-controls {
+    max-width: 1400px;
+    margin: 20px auto v.$spacing-unit * 2 auto;
+    @include m.flex-center();
+    justify-content: space-between;
+    padding: v.$spacing-unit;
+    border-bottom: 1px solid v.$color-border;
+
+    &__info {}
+
+    &__sort,
+    &__filter-toggle {
+        margin-bottom: 0;
+
+        @media (max-width: (v.$breakpoint-tablet - 1)) {
+            margin-bottom: v.$spacing-unit-small;
+        }
+    }
+
+    @media (max-width: (v.$breakpoint-tablet - 1)) {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px;
+    }
+}

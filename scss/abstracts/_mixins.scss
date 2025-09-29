@@ -1,0 +1,80 @@
+@use './variables'; // Değişkenleri çağırıyoruz
+
+// Responsif Tasarım Mixin'i
+@mixin respond-up($size) {
+  @if $size =="tablet" {
+
+    // Tablet ve üzeri için kural
+    @media (min-width: variables.$breakpoint-tablet) {
+      @content;
+    }
+  }
+
+  @else if $size =="desktop" {
+
+    // Masaüstü ve üzeri için kural
+    @media (min-width: variables.$breakpoint-desktop) {
+      @content;
+    }
+  }
+
+  @else {
+    // Hata mesajı (opsiyonel)
+    @error "Bilinmeyen ekran boyutu '#{$size}'. Lütfen 'tablet' veya 'desktop' kullanın.";
+  }
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: 1.2;
+}
+
+
+@mixin form-input-base() {
+  width: 100%;
+  padding: variables.$spacing-unit-small;
+  margin-bottom: variables.$spacing-unit;
+  border: 1px solid variables.$color-border;
+  border-radius: variables.$border-radius-base;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: variables.$color-primary;
+    outline: none;
+  }
+}
+
+
+// Dinamik Grid Kolon Mixin'i
+@mixin make-col($size) {
+  // 12 kolonluk sistemde genişliği hesaplar
+  width: percentage($size / variables.$grid-columns);
+}
+
+// Grid Kapsayıcı Mixin'i (display: grid ve gap yönetimi)
+@mixin grid-container($gap: variables.$spacing-unit) {
+  display: grid;
+  gap: $gap;
+  // Varsayılan olarak mobil (1 sütun)
+  grid-template-columns: 1fr;
+}
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+// 4. Gölge Mixin'i (shadow-apply)
+@mixin shadow-apply($type: light) {
+  @if $type ==light {
+    box-shadow: variables.$shadow-light;
+  }
+
+  @else if $type ==medium {
+    box-shadow: variables.$shadow-medium;
+  }
+}

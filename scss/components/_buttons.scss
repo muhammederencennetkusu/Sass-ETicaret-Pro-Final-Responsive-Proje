@@ -1,0 +1,34 @@
+// GEREKLİ MODÜLLERİ ÇAĞIRMA
+// mixins modülünü 'm' kısa ismiyle yüklüyoruz.
+@use '../abstracts/variables';
+@use '../abstracts/mixins' as m;
+@use "sass:color";
+
+.btn {
+  // Değişken kullanımı
+  border-radius: variables.$border-radius-base;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+
+  // Mixin kullanımı: Default boyut
+  // Mixin'e 'm.' (mixins) isim alanı ile erişiyoruz.
+  @include m.button-size(variables.$spacing-unit, variables.$spacing-unit * 2, 1rem);
+}
+
+.btn-primary {
+  background-color: variables.$color-primary;
+  color: variables.$color-text-light;
+
+  &:hover {
+    // Sass:color modülü ve color.adjust() fonksiyonu ile renk koyulaştırma
+    background-color: color.adjust(variables.$color-primary, $lightness: -10%);
+  }
+}
+
+.btn-large {
+  // Mixin kullanımı: Büyük boyut
+  // Mixin'e 'm.' (mixins) isim alanı ile erişiyoruz.
+  @include m.button-size(variables.$spacing-unit * 1.5, variables.$spacing-unit * 3, 1.25rem);
+}

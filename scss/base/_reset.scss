@@ -1,0 +1,14 @@
+// scss/base/_reset.scss
+
+* {
+
+    box-sizing: border-box; // Responsive tasarımın olmazsa olmazı
+}
+
+html {
+    font-size: 100%; // Temel font boyutu
+}
+
+body {
+    margin: 0px;
+}
