@@ -23,7 +23,9 @@
         align-items: center;
 
         &__branding {
+            width: 100%;
             display: flex;
+            justify-content: space-between;
             flex-direction: column;
             margin-top: 19px;
             margin-left: 50px;
@@ -45,6 +47,7 @@
             gap: v.$spacing-unit * 1.5;
             font-size: 1.5rem;
             margin-left: 100px;
+            padding: 10px;
 
             a {
                 color: v.$color-text-light;
